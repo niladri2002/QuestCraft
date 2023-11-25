@@ -76,3 +76,47 @@
 .gap{
     margin-top: 5%;
 }
+
+
+
+
+
+/* ... (your existing styles) */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4%;
+  }
+  
+  .modal {
+    max-height: 80vh;
+    background-color: #d3d3d3; /* ash color */
+    padding: 4%;
+    border-radius: 7%;
+    overflow-y: auto;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: red;
+    font-size: xx-large;
+  }
+
+  .modal::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  
+  
+  
