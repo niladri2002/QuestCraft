@@ -1,7 +1,7 @@
-// QuestionForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from "./Navbar.jsx";
+import "./question_generator.css"
 
 function QuestionForm() {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ function QuestionForm() {
     subject: '',
     topic: '',
     difficulty: '',
-    marks: 0,
+    marks: null,
   });
 
   const handleChange = (e) => {
@@ -46,63 +46,69 @@ function QuestionForm() {
   };
 
   return (
-    <div>
+    <>
       <Navbar/>
+      <section className='backgroun first' >
+        <div className='heading'>
       <h1>Question Form</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="question">Question:</label>
+      </div>
+      <form className='form' onSubmit={handleSubmit}>
         <input
+        placeholder='Type the question'
           type="text"
           id="question"
           name="question"
           value={formData.question}
           onChange={handleChange}
+          className='input'
           required
         /><br />
-
-        <label htmlFor="subject">Subject:</label>
         <input
+        placeholder='Type the subject'
           type="text"
           id="subject"
           name="subject"
           value={formData.subject}
           onChange={handleChange}
+          className='input'
           required
         /><br />
-
-        <label htmlFor="topic">Topic:</label>
         <input
+        placeholder='Topic'
           type="text"
           id="topic"
           name="topic"
           value={formData.topic}
           onChange={handleChange}
+          className='input'
           required
         /><br />
-
-        <label htmlFor="difficulty">Difficulty:</label>
         <input
+        placeholder='Difficulty'
           type="text"
           id="difficulty"
           name="difficulty"
           value={formData.difficulty}
           onChange={handleChange}
+          className='input'
           required
         /><br />
-
-        <label htmlFor="marks">Marks:</label>
         <input
+        placeholder='Enter the marks for this question'
           type="number"
           id="marks"
           name="marks"
           value={formData.marks}
           onChange={handleChange}
+          className='input'
           required
         /><br />
-
-        <button type="submit">Submit</button>
+        <div className="gap">
+        <button className='submit-btn'type="submit">Submit</button>
+        </div>
       </form>
-    </div>
+      </section>
+      </>
   );
 }
 

@@ -11,7 +11,7 @@ const[yes,notyes]=useState(true)
         <div className='navlist'>
         <div className='logo'>
         <img src={require('./question.jpg')} alt='Picture'></img> 
-      <h1>PaperWiz</h1>
+      <h1>QuestCraft</h1>
       </div>
      <li className={yes?'active':""  }   onClick={()=>notyes(true)}><NavLink to="/">Generate-Questions</NavLink></li>
         <li className={!yes?'active':""  }onClick={()=>notyes(false)}><NavLink to="/input">Insert-Questions</NavLink></li>

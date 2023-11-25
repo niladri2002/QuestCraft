@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from "./Navbar";
+import "./question_generator.css"
 
 function Question_paper_generation() {
     const [totalMarks, setTotalMarks] = useState('');
@@ -23,6 +24,12 @@ function Question_paper_generation() {
               'Content-Type': 'application/json',
             },
         });
+        setTotalMarks('')
+        setEasyPercentage('')
+        setMediumPercentage('')
+        setHardPercentage('')
+
+
         console.log(response)
   
         setQuestionPaper(response.data);
@@ -32,27 +39,21 @@ function Question_paper_generation() {
     };
   
   return (
-    <div className="App">
+    <>
         <Navbar/>
+        <section className='backgroun first' >
+            <div className='heading'>
     <h1>Question Paper Generator</h1>
-    <div>
-      <label>Total Marks:</label>
-      <input type="number" value={totalMarks} onChange={(e) => setTotalMarks(e.target.value)} />
     </div>
-    <div>
-      <label>Percentage of Easy Questions:</label>
-      <input type="number" value={easyPercentage} onChange={(e) => setEasyPercentage(e.target.value)} />
+    <div className='form'>
+    <input className='input'type="number" placeholder='Total Marks' value={totalMarks} onChange={(e) => setTotalMarks(e.target.value)} />
+    <input className='input' placeholder='Percentage of Easy Questions' type="number" value={easyPercentage} onChange={(e) => setEasyPercentage(e.target.value)} />
+    <input className='input' placeholder='Percentage of Medium Questions'  type="number" value={mediumPercentage} onChange={(e) => setMediumPercentage(e.target.value)} />
+   <input className='input' placeholder='Percentage of Hard Questions' type="number" value={hardPercentage} onChange={(e) => setHardPercentage(e.target.value)} />
+   <div className="gap">
+    <button className='submit-btn' onClick={handleGeneratePaper}>Generate Question Paper</button>
     </div>
-    <div>
-      <label>Percentage of Medium Questions:</label>
-      <input type="number" value={mediumPercentage} onChange={(e) => setMediumPercentage(e.target.value)} />
     </div>
-    <div>
-      <label>Percentage of Hard Questions:</label>
-      <input type="number" value={hardPercentage} onChange={(e) => setHardPercentage(e.target.value)} />
-    </div>
-    <button onClick={handleGeneratePaper}>Generate Question Paper</button>
-
     {questionPaper && (
         <div>
           <h2>Generated Question Paper</h2>
@@ -73,7 +74,8 @@ function Question_paper_generation() {
           ))}
         </div>
       )}
-  </div>
+      </section>
+      </>
 
   )
 }

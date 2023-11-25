@@ -12,13 +12,13 @@
 
 
 .backgroun{
-     background: linear-gradient(rgba(0, 8, 51, 0.9),rgba(0,8,51,0.9)),url("back1.jpg");
+     background: linear-gradient(rgba(0, 8, 51, 0.9),rgba(0,8,51,0.9)),url("home-bg.jpg");
     background-size: cover; 
     background-blend-mode: darken;
 }
 
 .background{
-     background: rgba(0, 0, 0, 0.7)url("back1.jpg"); 
+     background: rgba(0, 0, 0, 0.7)url("home-bg.jpg"); 
     background-size: cover;
     background-blend-mode: darken;
 }
