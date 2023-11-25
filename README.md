@@ -155,6 +155,76 @@ if (!dp[marksForDifficulty]) {
 }
 ```
 
+# APIs
+
+## Backend APIs
+
+### 1. Generate Question Paper
+
+- **Endpoint**: `/generate-paper`
+- **Method**: `POST`
+- **Description**: Generates a question paper based on user input.
+- **Request Payload**:
+  - `totalMarks`: Total marks for the question paper.
+  - `difficultyDistribution`: Object containing percentages for Easy, Medium, and Hard questions.
+  - **Example**:
+    ```json
+    {
+      "totalMarks": 100,
+      "difficultyDistribution": {
+        "Easy": 20,
+        "Medium": 50,
+        "Hard": 30
+      }
+    }
+    ```
+  - **Response**:
+    - A JSON object containing the generated question paper details.
+
+### 2. Get All Questions
+
+- **Endpoint**: `/questions`
+- **Method**: `GET`
+- **Description**: Retrieves all questions from the database.
+- **Response**:
+  - An array of question objects.
+
+### 3. Add New Question
+
+- **Endpoint**: `/questions/add`
+- **Method**: `POST`
+- **Description**: Adds a new question to the database.
+- **Request Payload**:
+  - `question`: Text of the question.
+  - `subject`: Subject of the question.
+  - `topic`: Topic of the question.
+  - `difficulty`: Difficulty level of the question.
+  - `marks`: Marks assigned to the question.
+  - **Example**:
+    ```json
+    {
+      "question": "What is the capital of France?",
+      "subject": "Geography",
+      "topic": "Countries",
+      "difficulty": "Medium",
+      "marks": 5
+    }
+    ```
+  - **Response**:
+    - A JSON object confirming the addition of the question.
+
+## Frontend APIs
+
+### 1. Retrieve Generated Question Paper
+
+- **Method**: `GET`
+- **Description**: Retrieves the generated question paper details.
+- **Example**:
+  ```javascript
+  const response = await axios.get('/generate-paper');
+  console.log(response.data);
+
+
 
 
 ## Why QuestCraft is Unique
