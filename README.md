@@ -91,6 +91,71 @@ const difficultyDistribution = { Easy: 20, Medium: 50, Hard: 30 };
 const questionPaper = await generateQuestionPaper(totalMarks, difficultyDistribution);
 ```
 
+### Shuffle Spells: Adding a Dash of Randomness
+To ensure the magic of unpredictability, QuestCraft employs a spellbinding shuffle. Questions within each difficulty level are shuffled, guaranteeing that each paper is a distinct blend of challenges.
+
+```json
+const shuffledQuestions = shuffleArray([...questions]);
+```
+
+### Dynamic Programming Sorcery: Unraveling the Sequencing Magic
+Enter the wizardry of dynamic programming! This is where the algorithm strategically selects sequences of questions to match the desired difficulty marks, ensuring a balanced and challenging paper.
+
+```json
+const dp = Array(marksForDifficulty + 1).fill(false);
+dp[0] = true;
+
+for (const question of shuffledQuestions) {
+  for (let i = marksForDifficulty; i >= question.marks; i--) {
+    if (dp[i - question.marks]) {
+      dp[i] = true;
+    }
+  }
+}
+```
+
+### Paper Puzzles: Crafting the Perfect Tapestry
+When the stars align, and a sequence is revealed, QuestCraft carefully curates the questions. Each question contributes to the symphony of knowledge, ensuring that the selected questions align perfectly with the specified difficulty marks.
+
+```json
+if (dp[marksForDifficulty]) {
+  const selectedQuestions = [];
+  let remainingMarks = marksForDifficulty;
+
+  for (const question of shuffledQuestions) {
+    if (question.marks <= remainingMarks && dp[remainingMarks - question.marks]) {
+      selectedQuestions.push(question);
+      remainingMarks -= question.marks;
+    }
+
+    if (remainingMarks === 0) {
+      break;
+    }
+  }
+
+  questionPaper.sections.push({
+    difficulty,
+    marks: marksForDifficulty,
+    questions: [...selectedQuestions],
+  });
+}
+```
+
+### Graceful Enchantments: Handling the Unseen Challenges
+Yet, not every enchantment unfolds flawlessly. If the magic encounters challenges and a sequence eludes its grasp, QuestCraft gracefully handles the situation. It introduces a set of default questions, ensuring that the exam enchantment remains unbroken.
+
+```json
+// If magic falters and a sequence is not found
+if (!dp[marksForDifficulty]) {
+  questionPaper.sections.push({
+    difficulty,
+    marks: marksForDifficulty,
+    questions: await getDefaultQuestions(difficulty), // Implement getDefaultQuestions function
+  });
+}
+```
+
+
 
 ## Why QuestCraft is Unique
 
