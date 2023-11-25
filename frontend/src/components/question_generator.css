@@ -97,11 +97,18 @@
   }
   
   .modal {
+    background: linear-gradient(to right,rgb(51, 7, 133),#330458);
     max-height: 80vh;
-    background-color: #d3d3d3; /* ash color */
+    background-color: #d3d3d3; 
     padding: 4%;
     border-radius: 7%;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    font-size: larger;
+color: white;
   }
   
   .close-btn {
@@ -118,5 +125,15 @@
     width: 0 !important;
   }
   
+
+  p{
+     margin:3%; 
+      
+  }
   
+  ul{
+   
+        margin-top: 5%; 
+     
+  }
   
